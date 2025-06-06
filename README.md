@@ -75,14 +75,19 @@ And then for the certificate be sure to note the following:
     </None>
   </ItemGroup>
 ```
+3. Build the solution - either from the IDE or with these commands
+```
+dotnet clean cybersource-rest-samples-netcore.csproj
+dotnet build cybersource-rest-samples-netcore.csproj
+```
 
-3. Run the solution.  At the prompt below type `BasicDMTransaction` to run the Decision Manager 
+4. Run the solution.  At the prompt below type `BasicDMTransaction` to run the Decision Manager 
 ```
 Type a sample name & then press <Return> 
 ```
 Confirm it returns a 201.
 
-4. Go to the CyberSource portal at https://ebctest.cybersource.com/ebc2/ and Navigate to Transactions -> Transaction Management to confirm the creation.
+5. Go to the CyberSource portal at https://ebctest.cybersource.com/ebc2/ and Navigate to Transactions -> Transaction Management to confirm the creation.
 
 ## Disclaimer
 
