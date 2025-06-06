@@ -52,6 +52,38 @@ _configurationDictionary.Add("runEnvironment", "apitest.cybersource.com");
 // _configurationDictionary.Add("runEnvironment", "api.cybersource.com");
 ```
 
+## Local changes for testing 
+
+1. Set up your Sandbox account in CyberSource and get the following:
+- merchantId
+- merchantsecretKey
+- merchantKeyId
+
+And then for the certificate be sure to note the following:
+- certificate filename
+- certificate password (this is the password you entered at the time of creation in the CyberSource portal)
+
+2. Modify the code in this repository in the following areas:
+
+- [Source/Configuration.cs](.\Source\Configuration.cs) where it requires the information from step (1)
+- [cybersource-rest-samples-netcore.csproxy](.\cybersource-rest-samples-netcore.csproxy) where the code copies the certificate to the output directory, change it to your filename (this step may not be required on Windows. I had to do it on MAC).
+
+```
+  <ItemGroup>
+    <None Include="Source\Resource\bigwdevsandbox_1747879301.p12">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+```
+
+3. Run the solution.  At the prompt below type `BasicDMTransaction` to run the Decision Manager 
+```
+Type a sample name & then press <Return> 
+```
+Confirm it returns a 201.
+
+4. Go to the CyberSource portal at https://ebctest.cybersource.com/ebc2/ and Navigate to Transactions -> Transaction Management to confirm the creation.
+
 ## Disclaimer
 
 Cybersource may allow Customer to access, use, and/or test a Cybersource product or service that may still be in development or has not been market-tested (“Beta Product”) solely for the purpose of evaluating the functionality or marketability of the Beta Product (a “Beta Evaluation”). Notwithstanding any language to the contrary, the following terms shall apply with respect to Customer’s participation in any Beta Evaluation (and the Beta Product(s)) accessed thereunder): The Parties will enter into a separate form agreement detailing the scope of the Beta Evaluation, requirements, pricing, the length of the beta evaluation period (“Beta Product Form”). Beta Products are not, and may not become, Transaction Services and have not yet been publicly released and are offered for the sole purpose of internal testing and non-commercial evaluation. Customer’s use of the Beta Product shall be solely for the purpose of conducting the Beta Evaluation. Customer accepts all risks arising out of the access and use of the Beta Products. Cybersource may, in its sole discretion, at any time, terminate or discontinue the Beta Evaluation. Customer acknowledges and agrees that any Beta Product may still be in development and that Beta Product is provided “AS IS” and may not perform at the level of a commercially available service, may not operate as expected and may be modified prior to release. CYBERSOURCE SHALL NOT BE RESPONSIBLE OR LIABLE UNDER ANY CONTRACT, TORT (INCLUDING NEGLIGENCE), OR OTHERWISE RELATING TO A BETA PRODUCT OR THE BETA EVALUATION (A) FOR LOSS OR INACCURACY OF DATA OR COST OF PROCUREMENT OF SUBSTITUTE GOODS, SERVICES OR TECHNOLOGY, (B) ANY CLAIM, LOSSES, DAMAGES, OR CAUSE OF ACTION ARISING IN CONNECTION WITH THE BETA PRODUCT; OR (C) FOR ANY INDIRECT, INCIDENTAL OR CONSEQUENTIAL DAMAGES INCLUDING, BUT NOT LIMITED TO, LOSS OF REVENUES AND LOSS OF PROFITS.

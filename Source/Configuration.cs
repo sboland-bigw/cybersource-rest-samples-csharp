@@ -11,15 +11,23 @@ namespace Cybersource_rest_samples_dotnet
 
         public Dictionary<string, string> GetConfiguration()
         {
-            _configurationDictionary.Add("authenticationType", "HTTP_SIGNATURE");
-            _configurationDictionary.Add("merchantID", "testrest");
-            _configurationDictionary.Add("merchantsecretKey", "yBJxy6LjM2TmcPGu+GaJrHtkke25fPpUX+UY6/L/1tE=");
-            _configurationDictionary.Add("merchantKeyId", "08c94330-f618-42a3-b09d-e1e43be5efda");
-            _configurationDictionary.Add("keysDirectory", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..\\..\\..\\Source\\Resource"));
-            _configurationDictionary.Add("keyFilename", "testrest");
+            // We want the JWT authenticationType to use for Certificates 
+            _configurationDictionary.Add("authenticationType", "JWT");
+            
+            // insert your merchantID, merchantsecretKey and merchantKeyId
+            _configurationDictionary.Add("merchantID", "<<ENTER YOUR MERCHANT ID HERE>>");
+            _configurationDictionary.Add("merchantsecretKey", "<<ENTER YOUR MERCHANT SECRET HERE>>");
+            _configurationDictionary.Add("merchantKeyId", "<<ENTER YOUR MERCHANT KEY ID HERE>>");
+            
+            // Changed the formatting to make it work on a Mac
+            _configurationDictionary.Add("keysDirectory", Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Source//Resource"));
+            
+            // Change the keyFilename, keyAlias and keyPass to what you downloaded and selected as the keyPass for 
+            _configurationDictionary.Add("keyFilename", "<<ENTER YOUR CERTIFICATE FILE NAME HERE WITHOUT THE .p12 suffix>>");
+            _configurationDictionary.Add("keyAlias", "<<ENTER YOUR CERTIFICATE FILE NAME HERE WITHOUT THE .p12 suffix>>");
+            _configurationDictionary.Add("keyPass", "<<ENTER YOUR CERTIFICATE PASSWORD>>");
             _configurationDictionary.Add("runEnvironment", "apitest.cybersource.com");
-            _configurationDictionary.Add("keyAlias", "testrest");
-            _configurationDictionary.Add("keyPass", "testrest");
+            
             _configurationDictionary.Add("timeout", "300000");
 
             // Configs related to meta key
@@ -117,6 +125,9 @@ namespace Cybersource_rest_samples_dotnet
             // _configurationDictionary.Add("proxyPort", string.Empty);
             // _configurationDictionary.Add("proxyUsername", string.Empty);
             // _configurationDictionary.Add("proxyPassword", string.Empty);
+            
+            _configurationDictionary.Add("useMLEGlobally", "true");     //globally MLE will be enabled for all the MLE supported APIs by Cybs in SDK
+
             return _configurationDictionary;
         }
     }

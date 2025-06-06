@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <RootNamespace>SampleCodeNetCore</RootNamespace>
     <AssemblyName>SampleCodeNetCore</AssemblyName>
   </PropertyGroup>
@@ -63,5 +63,10 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="Source\Resource\bigwdevsandbox_1747879301.p12">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   
 </Project>

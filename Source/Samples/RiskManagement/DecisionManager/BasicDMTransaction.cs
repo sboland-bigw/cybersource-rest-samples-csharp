@@ -19,7 +19,7 @@ namespace Cybersource_rest_samples_dotnet.Samples.RiskManagement
 
         public static RiskV1DecisionsPost201Response Run()
         {
-            string clientReferenceInformationCode = "54323007";
+            string clientReferenceInformationCode = "54323010";
             string clientReferenceInformationComments = "decision manager case";
             string clientReferenceInformationPartnerDeveloperId = "7891234";
             string clientReferenceInformationPartnerSolutionId = "89012345";
@@ -36,7 +36,7 @@ namespace Cybersource_rest_samples_dotnet.Samples.RiskManagement
 
             string paymentInformationCardNumber = "4444444444444448";
             string paymentInformationCardExpirationMonth = "12";
-            string paymentInformationCardExpirationYear = "2025";
+            string paymentInformationCardExpirationYear = "2030";
             Riskv1decisionsPaymentInformationCard paymentInformationCard = new Riskv1decisionsPaymentInformationCard(
                 Number: paymentInformationCardNumber,
                 ExpirationMonth: paymentInformationCardExpirationMonth,
@@ -48,7 +48,7 @@ namespace Cybersource_rest_samples_dotnet.Samples.RiskManagement
            );
 
             string orderInformationAmountDetailsCurrency = "USD";
-            string orderInformationAmountDetailsTotalAmount = "144.14";
+            string orderInformationAmountDetailsTotalAmount = "200.00";
             Riskv1decisionsOrderInformationAmountDetails orderInformationAmountDetails = new Riskv1decisionsOrderInformationAmountDetails(
                 Currency: orderInformationAmountDetailsCurrency,
                 TotalAmount: orderInformationAmountDetailsTotalAmount
